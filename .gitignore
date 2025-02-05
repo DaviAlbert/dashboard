@@ -7,18 +7,51 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependências
 node_modules
+
+# Build e arquivos de saída
 dist
 dist-ssr
 *.local
 
-# Editor directories and files
+# Cache do Vite
+.vite
+.vitepress
+cache
+temp
+
+# Testes e cobertura
+coverage
+*.lcov
+.vitest
+jest-cache
+jest-transform-cache
+
+# Editor e IDE
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Configurações do sistema
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Configurações específicas do TailwindCSS
+.tailwind/
+
+# Cache do React Query (opcional)
+react-query-cache/
+
+# Arquivos de ambiente
+.env
+.env.development.local
+.env.test.local
+.env.production.local

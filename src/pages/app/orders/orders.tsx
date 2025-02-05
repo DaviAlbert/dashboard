@@ -7,15 +7,18 @@ import { getOrders } from "@/api/getOrders.ts";
 import { OrderTableRow } from "./orderTableRow.tsx";
 import { useSearchParams } from "react-router-dom";
 import { z } from "zod";
+import { PedidosSkeleton } from "../dashboard/pedidosSkeleton.tsx";
 
 export function Orders(){
     const [searchParams, setSearchParams] = useSearchParams()
-
     const pageIndex = z.coerce.number().transform(page =>page-1).parse(searchParams.get('page') ?? '1')
+    const orderId = searchParams.get('orderId')
+    const customerName = searchParams.get('customerName')
+    const status = searchParams.get('status')
 
     const {data: result} = useQuery({
-        queryKey:['orders', pageIndex],
-        queryFn: ()=> getOrders({pageIndex}),
+        queryKey:['orders', pageIndex, orderId, customerName, status],
+        queryFn: ()=> getOrders({pageIndex, orderId, customerName, status: status == 'all' ? null: status}),
     })
 
     function handlePaginate(pageIndex:number){
@@ -34,24 +37,28 @@ export function Orders(){
                 <OrderTableFilter/>
                 <div className="border rounded-md">
                     <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead className="w-[64px]"></TableHead>
-                                <TableHead className="w-[140px]">Identificador</TableHead>
-                                <TableHead className="w-[180px]">Realizado há</TableHead>
-                                <TableHead className="w-[140px]">Status</TableHead>
-                                <TableHead>Cliente</TableHead>
-                                <TableHead className="w-[140px]">Total do pedido</TableHead>
-                                <TableHead className="w-[164px]"></TableHead>
-                                <TableHead className="w-[132px]"></TableHead>
-                            </TableRow>
-                        </TableHeader>
-                            <TableBody>
-                            {result && 
+                            {result ? 
                                 result.orders.map((order)=>{
-                                    return <OrderTableRow key={order.orderId} order={order}/>
-                            })}
-                            </TableBody>
+                                    return (
+                                        <>
+                                        <TableHeader>
+                                            <TableRow>
+                                                <TableHead className="w-[64px]"></TableHead>
+                                                <TableHead className="w-[140px]">Identificador</TableHead>
+                                                <TableHead className="w-[180px]">Realizado há</TableHead>
+                                                <TableHead className="w-[140px]">Status</TableHead>
+                                                <TableHead>Cliente</TableHead>
+                                                <TableHead className="w-[140px]">Total do pedido</TableHead>
+                                                <TableHead className="w-[164px]"></TableHead>
+                                                <TableHead className="w-[132px]"></TableHead>
+                                            </TableRow>
+                                        </TableHeader>
+                                        <TableBody>
+                                            <OrderTableRow key={order.orderId} order={order}/>
+                                        </TableBody>
+                                        </>
+                                    )
+                            }):(<PedidosSkeleton/>)}
                     </Table>
                 </div>
                 {result && <Pagination 

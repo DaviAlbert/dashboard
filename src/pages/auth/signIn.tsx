@@ -23,14 +23,13 @@ export function SignIn(){
         mutationFn: signIn,
       })
 
-    async function HandleSignIn(data: SignInForm){
+    async function handleSignIn(data: SignInForm){
         try {
-            const response = await authenticate({ email: data.email })
-            console.log(response)
+            await authenticate({ email: data.email })
             toast.success('Enviamos um link de autenticação para seu email.',{
                 action:{
                     label:'SignIn',
-                    onClick:()=> HandleSignIn(data),
+                    onClick:()=> handleSignIn(data),
                 }
             })
         } catch (error) {
@@ -52,7 +51,7 @@ export function SignIn(){
                         <h1 className='text-2xl font-semibold traqcking-tight'>Acessar painel</h1>
                         <p className='text-sm text-muted-foreground'>Acompanhe suas vendar pelo painel do parceiro!</p>
                     </div>
-                    <form onSubmit={handleSubmit(HandleSignIn)} className='space-y-4'>
+                    <form onSubmit={handleSubmit(handleSignIn)} className='space-y-4'>
                         <div className='space-y-2'>
                             <Label htmlFor='email'>Seu e-mail</Label>
                             <Input className='p-[10px] m-[5px]' id='emil' type='email' {...register('email')}/>

@@ -28,5 +28,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src", "components/ui/calendar.tsx", "components/ui/popover.tsx"]
 }

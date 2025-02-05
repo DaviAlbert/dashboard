@@ -50,7 +50,15 @@ export default {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			}
-  		}
+  		},
+		keyframes: {
+		pulse: {
+		  '50%': { opacity: '0.5' },
+		},
+		},
+		animation: {
+			pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+		},
   	}
   },
   plugins: [require("tailwindcss-animate")],
