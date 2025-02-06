@@ -55,3 +55,9 @@ react-query-cache/
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

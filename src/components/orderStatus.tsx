@@ -21,18 +21,18 @@ export function OrderStatus({ status }: OrderStatusProps) {
   return (
     <div className="flex items-center gap-2">
       {status === 'pending' && (
-        <span className="h-[10px] w-[10px] rounded-full bg-chart-3" />
+        <span data-testid="badge" className="h-[10px] w-[10px] rounded-full bg-chart-3" />
       )}
       {status === 'canceled' && (
-        <span className="h-[10px] w-[10px] rounded-full bg-chart-5" />
+        <span data-testid="badge" className="h-[10px] w-[10px] rounded-full bg-chart-5" />
       )}
       {status === 'delivered' && (
-        <span className="h-[10px] w-[10px]  rounded-full bg-chart-2" />
+        <span data-testid="badge" className="h-[10px] w-[10px]  rounded-full bg-chart-2" />
       )}
       {['processing', 'delivering'].includes(status) && (
-        <span className="h-[10px] w-[10px]  rounded-full bg-chart-1" />
+        <span data-testid="badge" className="h-[10px] w-[10px]  rounded-full bg-chart-1" />
       )}
-      <span className="font-medium text-muted-foreground ml-[5px]">
+      <span  className="font-medium text-muted-foreground ml-[5px]">
         {orderStatusMap[status]}
       </span>
     </div>

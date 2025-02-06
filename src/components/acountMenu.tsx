@@ -3,7 +3,7 @@ import {DropdownMenu} from './ui/dropdown-menu'
 import {Button} from './ui/button'
 import { Building, ChevronDown, LogOut } from 'lucide-react'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { getProfile } from '@/api/getProfile'
+import { GetProfile } from '@/api/getProfile'
 import { getManagedRestaurant } from '@/api/getManagedRestaurant'
 import { Skeleton } from './ui/skeleton'
 import { Dialog, DialogTrigger } from './ui/dialog'
@@ -16,7 +16,7 @@ export function AccoutMenu(){
 
     const {data:profile, isLoading: isLoadingProfile} = useQuery({
         queryKey:['profile'],
-        queryFn: getProfile,
+        queryFn: GetProfile,
     })
     const {data:managedRestaurant, isLoading: isLoadingManagedRestaurant} = useQuery({
         queryKey:['managed-restaurant'],

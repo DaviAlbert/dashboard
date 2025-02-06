@@ -7,7 +7,7 @@ import {z} from 'zod'
 import {toast} from 'sonner'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
-import {registerRestaurant} from '@/api/registerRestaurant'
+import {RegisterRestaurantBody} from '@/api/registerRestaurant'
 
 const signUpForm = z.object({
     restaurantName: z.string(),
@@ -28,7 +28,7 @@ export function SignUp(){
     const navigate = useNavigate()
 
     const { mutateAsync: registerRestaurantFn} = useMutation({
-        mutationFn: registerRestaurant,
+        mutationFn: RegisterRestaurantBody,
         onSuccess: () => {
             console.log("Restaurante registrado com sucesso!");
             // Aqui você pode invalidar queries ou atualizar o estado global
@@ -47,7 +47,6 @@ export function SignUp(){
                 email:data.email,
                 phone:data.phone,
             })
-            console.log('sucesso')
             toast.success('Restaurante Cadastrado com sucesso!', {
                 action:{
                     label:'SignUp',
@@ -55,7 +54,8 @@ export function SignUp(){
                 }
             })
         } catch (error) {
-            toast.error(`Erro ao cadastrar o Restaurante: ${error}`)
+            console.log(error)
+            toast.error('Erro ao cadastrar o Restaurante.')
         }
     }
 

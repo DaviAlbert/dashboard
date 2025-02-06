@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const signInForm = z.object({
     email: z.string().email(),
 })
@@ -33,7 +34,7 @@ export function SignIn(){
                 }
             })
         } catch (error) {
-            toast.error(`Erro ao fazer o login: ${error}`)
+            toast.error('Credenciais inválidas.')
         }
     }
 
@@ -54,7 +55,7 @@ export function SignIn(){
                     <form onSubmit={handleSubmit(handleSignIn)} className='space-y-4'>
                         <div className='space-y-2'>
                             <Label htmlFor='email'>Seu e-mail</Label>
-                            <Input className='p-[10px] m-[5px]' id='emil' type='email' {...register('email')}/>
+                            <Input className='p-[10px] m-[5px]' id='email' type='email' {...register('email')}/>
                         </div>
                         <Button disabled={isSubmitting} className='border-none p-[10px] w-[108%]' type='submit'>Acessar painel</Button>
                     </form>

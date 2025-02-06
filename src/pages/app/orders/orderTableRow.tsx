@@ -8,7 +8,7 @@ import {formatDistanceToNow} from 'date-fns'
 import {ptBR} from 'date-fns/locale'
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import {CancelOrder} from '@/api/cancelOrders'
+import {CancelOrder} from '@/api/cancelOrder'
 import { queryClient } from "@/lib/reactQuery";
 import { GetOrdersResponse } from "@/api/getOrders";
 
