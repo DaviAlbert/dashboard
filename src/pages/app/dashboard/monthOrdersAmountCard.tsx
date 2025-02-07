@@ -5,7 +5,7 @@ import { Utensils } from "lucide-react";
 import { MetricCardSkeleton } from "./metricCardSkeleton";
 
 export function MonthOrdersAmountCard(){
-    const { data: dayOrdersAmount} = useQuery({
+    const { data: MonthOrdersAmount} = useQuery({
         queryKey: ['metrics', 'month-orders-amount'],
         queryFn: getmonthOrdersAmount,
 
@@ -18,22 +18,22 @@ export function MonthOrdersAmountCard(){
             <Utensils className="h-4 w-4 text-muted-foreground"/>
         </CardHeader>
         <CardContent>
-        {dayOrdersAmount ?(
+        {MonthOrdersAmount ?(
                 <>
-                    <span className="text-2xl font-bold tracking-tight">{dayOrdersAmount.amount}</span>
+                    <span className="text-2xl font-bold tracking-tight">{MonthOrdersAmount.amount}</span>
                     <p className="text-xs text-muted-foreground">
-                        {dayOrdersAmount.diffFromLastMonth === 0 ? (
+                        {MonthOrdersAmount.diffFromLastMonth === 0 ? (
                         <>
                         <span className="text-chart-1 ml-[5px]">
-                            {dayOrdersAmount.diffFromLastMonth}%
+                            {MonthOrdersAmount.diffFromLastMonth}%
                             {' '}
                         </span> 
                         em relação ao mês passado
                         </>
-                        ) : dayOrdersAmount.diffFromLastMonth > 0 ? (
+                        ) : MonthOrdersAmount.diffFromLastMonth > 0 ? (
                             <>
                                 <span className="text-chart-2 ml-[5px]">
-                                    +{dayOrdersAmount.diffFromLastMonth}%
+                                    +{MonthOrdersAmount.diffFromLastMonth}%
                                     {' '}
                                 </span> 
                                 em relação ao mês passado
@@ -41,7 +41,7 @@ export function MonthOrdersAmountCard(){
                         ) : (
                             <>
                                 <span className="text-chart-5 ml-[5px]">
-                                    {dayOrdersAmount.diffFromLastMonth}%
+                                    {MonthOrdersAmount.diffFromLastMonth}%
                                     {' '}
                                 </span> 
                                 em relação ao mês passado

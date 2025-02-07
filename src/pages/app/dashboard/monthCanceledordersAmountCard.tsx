@@ -32,7 +32,7 @@ export function MonthCanceledOrdersAmountCard(){
                             </>
                         ) : monthCanceledOrdersAmount.diffFromLastMonth > 0 ? (
                             <>
-                                <span className="text-chart-2 ml-[5px]">
+                                <span className="text-chart-5 ml-[5px]">
                                     +{monthCanceledOrdersAmount.diffFromLastMonth}%
                                     {' '}
                                 </span> 
@@ -40,7 +40,7 @@ export function MonthCanceledOrdersAmountCard(){
                             </>
                         ) : (
                             <>
-                                <span className="text-chart-5 ml-[5px]">
+                                <span className="text-chart-2 ml-[5px]">
                                     {monthCanceledOrdersAmount.diffFromLastMonth}%
                                     {' '}
                                 </span> 
